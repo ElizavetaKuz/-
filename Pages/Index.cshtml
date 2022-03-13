@@ -1,0 +1,41 @@
+﻿@page
+@model WebApplication2502.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Аудит бизнес-процессов";
+}
+
+<h1>Аудит бизнес-процессов</h1>
+
+<p>
+    <a asp-page="Create">Добавить компанию</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Name)
+                
+
+            </th>
+            <th> 1) аудит после разработки и внедрения регламентирующей бизнес-процесс документации; </th>
+            <th> 2) плановый аудит; </th>
+            <th> 3) внеплановый аудит.</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Customer) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Редактировать</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Подробнее</a> |
+                <a asp-page="./Delite" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
